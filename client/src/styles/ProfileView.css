@@ -1,0 +1,121 @@
+.navbar{
+    top: 0;
+}
+.profile-cover{
+    width: 100%;
+    height: 72vh;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 3.5rem;
+}
+.cover-div{
+    width: 100%;
+    height: 29rem;
+    overflow: hidden;
+    
+}
+.cover-image{
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(2000px);
+    display: flex;
+    justify-content: center;
+    position: relative;
+    background: linear-gradient(
+  to bottom,
+  rgba(209, 107, 165, 0.4),
+  rgba(171, 101, 160, 0.4),
+  rgba(135, 94, 149, 0.4),
+  rgba(102, 86, 133, 0.4),
+  rgba(74, 76, 112, 0.4),
+  rgba(60, 70, 99, 0.4),
+  rgba(49, 63, 84, 0.5),
+  rgba(42, 55, 70, 0.6),
+  rgba(40, 51, 62, 0.7),
+  rgba(38, 47, 54, 0.8),
+  rgba(37, 43, 47, 0.9),
+  rgba(37, 39, 40, 1)
+);
+
+}
+.cover{
+    width: 75%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0 0 .5rem .5rem;
+    backdrop-filter: blur(200px);
+}
+.edit-cover{
+    background-color: #F2F2F2;
+    position: absolute;
+    top: 85%;
+    left: 75%;
+    color: #252728;
+    padding: .5rem;
+    border-radius: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: .8rem;
+    font-weight: 600;
+}
+.cover-camera{
+    font-size: 1.2rem;
+    margin-top: 2px;
+    padding-right: .5rem;
+}
+.profile-div{
+    width: 100%;
+    height: 14rem;
+    background-color: #252728;
+    padding: 0 15% 0 15%;
+}
+.profile-info{
+    display: flex;
+}
+.profile-image{
+    position: relative;
+}
+.profile-{
+    width: 11rem;
+    height: 11rem;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    top: -2rem;
+    border: 5px solid #252728;
+}
+.camera-icon{
+    position: absolute;
+    top: 40%;
+    left: 80%;
+}
+.profile-name{
+    font-size: 2rem;
+    padding: 1rem;
+    padding-top: 2rem;
+}
+.details{
+    display: flex;
+    flex-direction: column;
+   
+}
+.follow{
+    color: #B0B3B8;
+    font-size: .9rem;
+    padding-left: 1rem;
+}
+.profile-links ul{
+    list-style: none;
+    display: flex;
+    border-top: 1px solid #66686C;
+    color: #B0B3B8;
+    font-size: .9rem;
+    padding-left: 1rem;
+    margin-top: -1rem;
+}
+.profile-links ul li{
+    padding: 1rem 2rem 0 0;
+}

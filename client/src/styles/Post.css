@@ -1,0 +1,212 @@
+.post{
+    width: 100%;
+    background-color: #242527;
+    border-radius: 1.5vmin;
+    color: #E7E9EC;
+    margin: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.post-heading{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+.two-icon{
+    display: flex;
+    gap: 1.2rem;
+    font-size: 1.4rem;
+    color: #CFD0D0;
+    padding-right: 10px;
+    
+}
+.post-caption{
+    padding-left: 10px;
+    font-size: .8rem;
+}
+.icon1, .icon2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.post-image, .post-video{
+    width: 100%;
+    padding: 10px 0px;
+}
+.p-image, .post-video, .p-video{
+    width: 100%;
+    cursor: pointer;
+}
+.activity-counter{
+    width: 96%;
+    margin-left: 2%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 0px 10px 0px;
+    align-items: center;
+    font-size: .8rem;
+    border-bottom: 1px solid #3A3B3C;
+}
+.com-share{
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+.reactions{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.reaction{
+    font-size: 1.5rem;
+}
+.activity{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 2px 0px;
+}
+.activity i{
+    font-size: 1.5rem;
+}
+.activity span{
+    font-size: .8rem;
+}
+.like, .comment, .send, .share{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 1% 6%;
+    border-radius: .5rem;
+    transition: transform 3s ease;
+    cursor: pointer;
+}
+.like:hover, .comment:hover, .send:hover, .share:hover{
+    background-color: #3A3B3C;
+}
+.react-icon{
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.react-icons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+}
+.reaction-panel .react-icon:hover, .reaction-panel img:hover{
+    scale: 1.2;
+}
+.like-icon{
+    background-color: blue;
+    font-size: .8rem;
+    width: 1.3rem;
+    height: 1.3rem;
+}
+.love-icon{
+    background-color: red;
+    font-size: .7rem;
+    width: 1.3rem;
+    height: 1.3rem;
+}
+.reaction-panel{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 3%;
+    /* display: none; */
+    position: absolute;
+    bottom: 20%;
+    left: 2%;
+    z-index: 1000;
+    transition: transform 3s ease;
+    animation: reaction-animation .4s forwards;
+}
+.panel{
+    position: relative;
+}
+.abs{
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.likee::before, .love::before, .care::before, .haha::before, .sad::before, .angry::before, .wow::before{
+    position: absolute;
+    top: -2rem;
+    background-color: #242527;
+    font-size: .7rem;
+    padding: .2rem .5rem;
+    border-radius: .5rem;
+    font-style: normal;
+    transition: all 10s ease 20s;
+}
+.likee:hover::before{
+    content: "Like";
+}
+.love:hover::before{
+    content: "Love";
+}
+.care:hover::before{
+    content: "Care";
+}
+.haha:hover::before{
+    content: "Haha";
+}
+.sad:hover::before{
+    content: "Sad";
+}
+.angry:hover::before{
+    content: "Angry";
+}
+.wow:hover::before{
+    content: "Wow";
+}
+.reaction-panel img{
+    width: 2.2rem;
+    height: 2.2rem;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes shaker {
+    0%{
+        transform: rotate(2);
+    }
+}
+@keyframes reaction-animation {
+    from{
+        bottom: 20%;
+    }
+    to{
+        bottom: 110%;
+        background-color: #242527;
+    }
+}
+@media (width < 460px) {
+    .like, .comment, .send, .share{
+        flex-direction: column;
+        gap: 1px;
+    }
+}
+@media (width < 250px) {
+    .two-icon{
+        gap: 1%;
+    }
+    .com-share{
+        gap: 1%;
+    }
+    .reactions{
+        gap: 1%;
+    }
+}

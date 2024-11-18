@@ -1,0 +1,86 @@
+{
+    "admin":
+    {
+        "id": 1,
+        "firstName": "Madan",
+        "lastName": "Acharya",
+        "profile": "/images/blank-profile.webp",
+        "time": "2 hours ago",
+        "image": "/images/fb-profile-sample.webp",
+        "video": "videos/v1.mp4",
+        "caption": "This is the caption from json file❤️‍🔥",
+        "reactionCount": "201.5k",
+        "commentCount": "57.6k",
+        "shareCount": "37k",
+        "isOnline": true,
+        "isAdmin": true,
+        "cover": "/images/myPic.jpeg"
+    },
+    "post":
+    [
+    {
+        "id": 1,
+        "name": "Nikesh Shah",
+        "profile": "/images/nikesh-profile.jpg",
+        "time": "18 hours ago",
+        "image": "/images/nikesh.jpeg",
+        "video": "videos/v1.mp4",
+        "caption": "This is the caption from json file❤️‍🔥",
+        "reactionCount": "201.5k",
+        "commentCount": "57.6k",
+        "shareCount": "37k"
+    },
+    {
+        "id": 2,
+        "name": "Rohan Poudel",
+        "profile": "/images/rohan-profile.jpg",
+        "time": "7 hours ago",
+        "image": "/images/rohan-model.jpg",
+        "video": "videos/v1.mp4",
+        "caption": "This is the caption from json file❤️‍🔥",
+        "reactionCount": "201.5k",
+        "commentCount": "57.6k",
+        "shareCount": "37k",
+        "isOnline": true
+    },
+    {
+        "id": 3,
+        "name": "Samir Acharya",
+        "profile": "/images/samir.jpg",
+        "time": "7 hours ago",
+        "image": "/images/samir.jpg",
+        "video": "videos/v1.mp4",
+        "caption": "This is the caption from json file❤️‍🔥",
+        "reactionCount": "1.5k",
+        "commentCount": "6k",
+        "shareCount": "7k",
+        "isOnline": true
+    },
+    {
+        "id": 4,
+        "name": "Nikesh Shah",
+        "profile": "/images/nikesh-profile.jpg",
+        "time": "18 hours ago",
+        "image": "/images/nikesh-profile.jpg",
+        "video": "videos/v1.mp4",
+        "caption": "This is the caption from json file❤️‍🔥",
+        "reactionCount": "201.5k",
+        "commentCount": "57.6k",
+        "shareCount": "37k"
+    },
+    {
+        "id": 5,
+        "name": "Rohan Poudel",
+        "profile": "/images/rohan-profile.jpg",
+        "time": "7 hours ago",
+        "image": "/images/rohan-with-glasses.jpeg",
+        "video": "videos/v1.mp4",
+        "caption": "This is the caption from json file❤️‍🔥",
+        "reactionCount": "201.5k",
+        "commentCount": "57.6k",
+        "shareCount": "37k",
+        "isOnline": true
+    }
+]
+}
+

@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+html, body{
+    width: 100vw;
+    font-size: 16px;
+    background-color: #18181A;
+}
+iframe{
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+  z-index: -999999 !important;
+}
+@media (max-width: 1200px) {
+    html {
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    html {
+      font-size: 12px;
+    }
+  }
+  @media (max-width: 400px) {
+    html {
+      font-size: 3.5vw;
+    }
+  }

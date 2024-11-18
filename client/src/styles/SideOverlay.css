@@ -1,0 +1,9 @@
+.side-overlay{
+    position: absolute;
+    left: calc(100vw - 22rem);
+}
+/* @media (width < 900px) {
+    .side-overlay{
+        left: 0;
+    }
+} */

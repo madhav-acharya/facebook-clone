@@ -1,0 +1,126 @@
+.story-container{
+    height: 220px;
+    display: flex;
+    align-items: center;
+    overflow-x: scroll;
+    gap: 10px;
+    scroll-behavior: smooth;
+    margin-top: .5rem;
+}
+.story{
+    width: 110px;
+    height: 94%;
+    flex-shrink: 0;
+    background-color:  #242527;
+    border-radius: .7rem;
+    font-size: .8rem;
+    position: relative;
+    /* overflow: hidden; */
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    cursor: pointer;
+    display: flex;
+
+}
+.story-pic{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: .7rem;
+    object-fit: contain;
+    transition: all .5s ease;
+    backdrop-filter: blur(5px);
+}
+.story-container::-webkit-scrollbar{
+    display: none;
+    width: none;
+}
+.ons{
+    display: flex;
+    align-items: center;
+}
+.story-name{
+    width: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 5%;
+    flex-wrap: wrap;
+}
+.story-profile{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+}
+.create-story{
+    width: 100%;
+    height: 23%;
+    color: white;
+    font-size: .8rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: .6rem;
+    background-color:  #242527;
+}
+.own-story{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.own-story-pic{
+    width: 100%;
+    height: 77%;
+    border-radius: .7rem .7rem 0rem 0rem;
+    object-fit: fill;
+}
+.plus-icon{
+    position: absolute;
+    width: 2.2rem;
+    height: 2.2rem;
+    background-color: blue;
+    border-radius: 50%;
+    top: 68%;
+    left: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: white;
+    cursor: pointer;
+}
+.story-pic:hover, .own-story-pic:hover{
+    transform: scale(1.04);
+    filter: contrast(1.2) brightness(.8);
+}
+.s-cont{
+    position: relative;
+}
+.construct-button{
+    width: 3rem;
+    height: 3rem;
+    color: #CFD0D0;
+    background-color: #242527;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.previous-button{
+    flex-shrink: 0;
+    position: absolute;
+    left: 2.5%;
+    cursor: pointer;
+}
+.next-button{
+    flex-shrink: 0;
+    position: absolute;
+    left: 90%;
+    cursor: pointer;
+}

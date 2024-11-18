@@ -1,0 +1,58 @@
+.home-page{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1vmin;
+    align-items: center;
+    background-color: #18181A;
+    overflow: hidden;
+    color: white;
+}
+.main{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.gaming-content{
+    width: 75%;
+    border: 1px solid green;
+    min-width: 300px;
+    margin-left: 23%;
+    margin-top: 4.5rem;
+    z-index: 1000;
+}
+@media (width < 1600px) {
+    .gaming-content{
+        width: calc(100vw - 24rem);
+        margin-left: 23rem;
+    }
+}
+
+@media(width < 900px){
+    .gaming-content{
+        width: 100%;
+        min-width: 400px;
+        justify-content: center;
+        margin-left: 0;
+    }
+    .gaming .page-side-bar{
+        display: none;
+    }
+}
+@media(width < 600px){
+    .gaming-content{
+        width: 100%;
+        min-width: 300px;
+        justify-content: center;
+        margin-left: 0;
+    }
+}
+@media(width < 300px){
+    .gaming-content{
+        max-width: 100vw;
+        width: 100vw;
+        min-width: 100px;
+        justify-content: center;
+        margin-left: 0;
+    }
+}
