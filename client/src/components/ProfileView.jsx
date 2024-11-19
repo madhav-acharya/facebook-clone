@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/ProfileView.css";
 import datas from '../assets/json/data.json';
 import { HiCamera } from "react-icons/hi2";
 import { ProperIcon } from "./PageStructure";
 
 const ProfileView = () => {
+  const [pp, setPP] = useState(localStorage.getItem('pp'));
+  const [names, setNames] = useState(localStorage.getItem('names'))
   return (
     <div className="profile-view">
       <div className="profile-cover">
         <div
           className="cover-div"
           style={{
-            backgroundImage: `url(${datas.admin.cover})`,
+            backgroundImage: `url(${pp})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
@@ -19,7 +21,7 @@ const ProfileView = () => {
         >
           <div className="cover-image">
             <img
-              src={datas.admin.cover}
+              src={pp}
               alt="covers"
               className="cover"
             />
@@ -31,12 +33,12 @@ const ProfileView = () => {
         <div className="profile-div">
           <div className="profile-info">
             <div className="profile-image">
-              <img src={datas.admin.cover} alt="" className="profile-"/>
+              <img src={pp} alt="" className="profile-"/>
               <i className="camera-icon"> <ProperIcon icon={<HiCamera />}/> </i>
             </div>
             
             <div className="details">
-              <span className="profile-name">Madan Acharya</span>
+              <span className="profile-name">{names}</span>
               <span className="follow">200k followers . 0 following</span>
             </div>
             

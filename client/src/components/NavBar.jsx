@@ -406,7 +406,7 @@ export function Profile({ profile, isStory, isOnline, isAccount }) {
       <img
         src={profile}
         className={`${isStory ? "profile-pic for-story" : "profile-pic"}`}
-        alt="myProfile"
+        alt={profile}
       />
       {isOnline ? (
         <div className="online"></div>

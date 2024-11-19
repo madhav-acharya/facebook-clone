@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{useEffect, useRef, useState} from "react";
 import "../styles/SideBar.css";
 import { Profile } from "./NavBar";
 import { PiDotsThreeOutlineFill } from "react-icons/pi";
@@ -106,15 +106,24 @@ export const BarLink = ({
   msg,
 }) => {
   const navigate = useNavigate();
+  const targetProfile = useRef(null);
+  const targetPhoto = useRef(null);
+  // const [pp, setPP] = useState();
+  // const [names, setNames] = useState();
+
+  
   return (
-    <div className="bar-links" onClick={(e)=>{navigate('/profile'); console.log(e.target)}}>
+    <div className="bar-links" onClick={(e)=>{targetProfile.current.click(); targetPhoto.current.click()}}>
       {photo ? (
-        <Profile profile={photo} isOnline={isOnline} isStory={isStory} />
+        <div className="ppp" ref={targetPhoto} onClick={(e)=>{console.log(e.target.firstChild.firstChild.alt);  localStorage.setItem('pp', e.target.firstChild.firstChild.alt);}}>
+           <Profile profile={photo} isOnline={isOnline} isStory={isStory} />
+        </div>
+       
       ) : (
         <i className="bar-icon">{icon}</i>
       )}
       <div className="info">
-        <span className="p-name">{name}</span>
+        <span className="p-name" ref={targetProfile} onClick={(e)=>{navigate('/profile'); console.log(e.target.innerText); localStorage.setItem('names', e.target.innerText);}}>{name}</span>
         {isPost && (
           <div className="for-post">
             {added && (
