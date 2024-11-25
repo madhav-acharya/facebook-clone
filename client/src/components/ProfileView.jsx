@@ -25,16 +25,16 @@ const ProfileView = () => {
               alt="covers"
               className="cover"
             />
-            <span className="edit-cover">
+            {names===localStorage.getItem('firstName')+" "+localStorage.getItem('lastName')&&<span className="edit-cover">
             <i className="cover-camera"><HiCamera /> </i>Edit Cover Photo
-          </span>
+          </span>}
           </div>
         </div>
         <div className="profile-div">
           <div className="profile-info">
             <div className="profile-image">
               <img src={pp} alt="" className="profile-"/>
-              <i className="camera-icon"> <ProperIcon icon={<HiCamera />}/> </i>
+              {names===localStorage.getItem('firstName')+" "+localStorage.getItem('lastName')&&<i className="camera-icon"> <ProperIcon icon={<HiCamera />}/> </i>}
             </div>
             
             <div className="details">

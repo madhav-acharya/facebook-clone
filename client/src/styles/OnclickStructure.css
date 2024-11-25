@@ -95,8 +95,11 @@
 .story-link{
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    /* gap: 1rem; */
     padding-left: 1rem;
+}
+.story-active .bar-links{
+    /* background-color: red; */
 }
 .top-comments{
     padding: 1rem;
@@ -243,6 +246,10 @@
     padding: 1rem;
     padding-bottom: 2rem;
     border-bottom: 1px solid #3A3B3C;
+}
+.story-link .bar-links{
+    /* background-color: aliceblue; */
+    padding: 1rem;
 }
 @media (width < 1000px)
 {

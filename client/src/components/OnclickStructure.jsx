@@ -74,6 +74,7 @@ export const LeftSideBar = () => {
         <span className="other-title">All Stories</span>
         <div className="story-link">
           {datas.post.map((data) => (
+            <div className="story-active">
             <BarLink
               key={data.id}
               photo={data.profile}
@@ -84,6 +85,7 @@ export const LeftSideBar = () => {
               isPost={true}
               time={data.time}
             />
+            </div>
           ))}
         </div>
       </div>

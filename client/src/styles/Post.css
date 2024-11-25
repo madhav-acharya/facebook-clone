@@ -139,7 +139,9 @@
     font-size: 1.3rem;
     flex-shrink: 0;
 }
-
+.post-heading .bar-links:hover{
+    background-color: transparent;
+}
 .likee::before, .love::before, .care::before, .haha::before, .sad::before, .angry::before, .wow::before{
     position: absolute;
     top: -2rem;
