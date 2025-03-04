@@ -5,5 +5,5 @@
 
 [build.environment]
 NODE_OPTIONS = "--max-old-space-size=4096"
-NODE_VERSION = "23"
+NODE_VERSION = "18"
 CI = "false"
