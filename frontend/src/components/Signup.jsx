@@ -17,7 +17,7 @@ export const Signup = () => {
     const handleSignup = (e)=>
     {
         e.preventDefault();
-        axios.post('http://localhost:3001/api/users/register', {firstName, lastName, email, password})
+        axios.post('https://facebook-clone-backendd.onrender.com/api/users/register', {firstName, lastName, email, password})
         .then(()=>{
             console.log("Sucessfully sent to backend")
             navigate('/login')

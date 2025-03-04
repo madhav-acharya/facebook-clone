@@ -129,7 +129,7 @@ export const LeftNav = ({ isMainNav }) => {
   const navigate = useNavigate();
   return (
     <div className="leftNav" onClick={() => navigate("/")}>
-      <Profile profile={"/images/fb-logo.png"} />
+      <Profile profiles={"/images/fb-logo.png"} />
       {isMainNav && (
         <div className="nav-search">
           <i
@@ -396,12 +396,12 @@ export const RightNav = () => {
   );
 };
 
-export function Profile({ profile, isStory, isOnline, isAccount, _id, name }) {
+export function Profile({ profile, profiles, isStory, isOnline, isAccount, _id, name }) {
   return (
     <div className="profile" >
       <NavLink to={`/${name}/${_id}`}>
         <img
-          src={profile}
+          src={profile?`https://facebook-clone-backendd.onrender.com/${profile}`:profiles}
           className={`${isStory ? "profile-pic for-story" : "profile-pic"}`}
           alt={"profile"}
         />

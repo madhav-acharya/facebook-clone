@@ -22,34 +22,34 @@ export const LeftBar = () => {
         _id={currentUserDatas?currentUserDatas._id:""}
       />
       <div className="links" onClick={() => navigate("/")}>
-        <BarLink photo={"/images/friend.png"} name={"Friends"} />
+        <BarLink photos={"/images/friend.png"} name={"Friends"} />
       </div>
       <div className="links" onClick={() => navigate("/")}>
         <BarLink
-          photo={"/images/p-dashboard.png"}
+          photos={"/images/p-dashboard.png"}
           name={"Professional DashBoard"}
         />
       </div>
       <div className="links" onClick={() => navigate("/")}>
-        <BarLink photo={"/images/feeds.png"} name={"Feeds"} />
+        <BarLink photos={"/images/feeds.png"} name={"Feeds"} />
       </div>
       <div className="links" onClick={() => navigate("/groups")}>
-        <BarLink photo={"/images/groups.png"} name={"Groups"} />
+        <BarLink photos={"/images/groups.png"} name={"Groups"} />
       </div>
       <div className="links" onClick={() => navigate("/marketplace")}>
-        <BarLink photo={"/images/marketplace.png"} name={"MarketPlace"} />
+        <BarLink photos={"/images/marketplace.png"} name={"MarketPlace"} />
       </div>
       <div className="links" onClick={() => navigate("/watch")}>
-        <BarLink photo={"/images/watch.png"} name={"Videos"} />
+        <BarLink photos={"/images/watch.png"} name={"Videos"} />
       </div>
       <div className="links" onClick={() => navigate("/")}>
-        <BarLink photo={"/images/memories.png"} name={"Memories"} />
+        <BarLink photos={"/images/memories.png"} name={"Memories"} />
       </div>
       <div className="links s-links" onClick={() => navigate("/")}>
-        <BarLink photo={"/images/bookmark.png"} name={"Saved"} />
+        <BarLink photos={"/images/bookmark.png"} name={"Saved"} />
       </div>
       <div className="links s-links" onClick={() => navigate("/")}>
-        <BarLink photo={"/images/flag.png"} name={"Pages"} />
+        <BarLink photos={"/images/flag.png"} name={"Pages"} />
       </div>
       <div className="links" onClick={() => navigate("/")}>
         <BarLink
@@ -97,6 +97,7 @@ export const RightBar = () => {
 
 export const BarLink = ({
   photo,
+  photos,
   icon,
   name,
   isStory,
@@ -112,9 +113,9 @@ export const BarLink = ({
 
   return (
     <div className="bar-links" >
-      {photo ? (
+      {photo || photos ? (
         <div className="ppp"  >
-           <Profile profile={photo} isOnline={isOnline} isStory={isStory} _id={_id} name={name}/>
+           <Profile profile={photo} profiles={photos} isOnline={isOnline} isStory={isStory} _id={_id} name={name}/>
         </div>
        
       ) : (

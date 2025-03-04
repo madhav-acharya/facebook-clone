@@ -51,7 +51,7 @@ const ProfileView = () => {
 
     try {
       await axios.put(
-        `http://localhost:3001/api/users/${type}/update/${currentUserDatas._id}`,
+        `https://facebook-clone-backendd.onrender.com/api/users/${type}/update/${currentUserDatas._id}`,
         formData,
       )
       .then((res)=>{
@@ -83,7 +83,7 @@ const ProfileView = () => {
         <div
           className="cover-div"
           style={{
-            backgroundImage: `url(${userData?userData.coverPhoto:<p>loading...</p>})`,
+            backgroundImage: `url(https://facebook-clone-backendd.onrender.com/${userData?userData.coverPhoto:<p>loading...</p>})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -91,7 +91,7 @@ const ProfileView = () => {
         >
           <div className="cover-image">
             <img
-              src={userData?userData.coverPhoto:<p>loading...</p>}
+              src={userData?`https://facebook-clone-backendd.onrender.com/${userData.coverPhoto}`:<p>loading...</p>}
               alt="covers"
               className="cover"
             />
@@ -119,7 +119,7 @@ const ProfileView = () => {
           <div className="profile-info">
             <div className="profile-image">
               <img
-                src={userData.profilePicture}
+                src={`https://facebook-clone-backendd.onrender.com/${userData.profilePicture}`}
                 alt=""
                 className="profile-"
               />
@@ -193,7 +193,7 @@ const ProfileView = () => {
               <div className="post-image" onClick={() => navigate("/posts")}>
                 {userPost.image && (
                   <img
-                    src={userPost.image}
+                    src={`https://facebook-clone-backendd.onrender.com/${userPost.image}`}
                     alt="Post"
                     className="p-image"
                     onClick={() => localStorage.setItem("selectedStory", index)}
@@ -201,7 +201,7 @@ const ProfileView = () => {
                 )}
                 {userPost.video && (
                   <video
-                    src={userPost.video}
+                    src={`https://facebook-clone-backendd.onrender.com/${userPost.video}`}
                     className="p-video"
                     controls
                     autoPlay

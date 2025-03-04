@@ -16,7 +16,7 @@ export const AppProvider = ({children}) =>
     const [currentUserDatas, setCurrentUserDatas] = useState();
 
     const getData = async ()=>{
-        await axios.get('http://localhost:3001/api/posts/get')
+        await axios.get('https://facebook-clone-backendd.onrender.com/api/posts/get')
         .then((res)=>{
           console.log("got sucessfully ")
           setPostDatas(res.data)
@@ -26,7 +26,7 @@ export const AppProvider = ({children}) =>
         })
       }
       const getUsers = async ()=>{
-        await axios.get('http://localhost:3001/api/users/')
+        await axios.get('https://facebook-clone-backendd.onrender.com/api/users/')
         .then((res)=>{
           console.log("got sucessfully ")
           setUserDatas(res.data)
@@ -36,7 +36,7 @@ export const AppProvider = ({children}) =>
         })
       }
       const getCurrentUser = async ()=>{
-        await axios.get(`http://localhost:3001/api/users/${jwtDecode(localStorage.getItem('token')).id}`)
+        await axios.get(`https://facebook-clone-backendd.onrender.com/api/users/${jwtDecode(localStorage.getItem('token')).id}`)
         .then((res)=>{
           console.log("got sucessfully ")
           setCurrentUserDatas(res.data)
@@ -47,7 +47,7 @@ export const AppProvider = ({children}) =>
       }
 
       const getStoryData = async ()=>{
-        await axios.get('http://localhost:3001/api/stories/')
+        await axios.get('https://facebook-clone-backendd.onrender.com/api/stories/')
         .then((res)=>{
           console.log("got sucessfully ")
           setStoryDatas(res.data)

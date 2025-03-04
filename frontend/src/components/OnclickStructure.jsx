@@ -213,7 +213,7 @@ export const OnclickStory = () => {
               <img
                 src={
                   storyDatas
-                    ? storyDatas[Number(currentIndex)].image
+                    ? `https://facebook-clone-backendd.onrender.com/${storyDatas[Number(currentIndex)].image}`
                     : <p>loading...</p>
                 }
                 alt="storyimg"
@@ -288,7 +288,7 @@ export const OnclickStory = () => {
 export const OnclickPost = ({ image }) => {
   return (
     <div className="onclick-post">
-      <img src={image} alt="onclick-" className="p-image" />
+      <img src={`https://facebook-clone-backendd.onrender.com/${image}`} alt="onclick-" className="p-image" />
     </div>
   );
 };
@@ -387,7 +387,7 @@ export const CreateStoryCards = () => {
     formData.append("user", userId);
 
     axios
-      .post("http://localhost:3001/api/stories/uploads", formData)
+      .post("https://facebook-clone-backendd.onrender.com/api/stories/uploads", formData)
       .then((res) => {
         console.log("Uploaded sucessfully ");
         navigate("/");

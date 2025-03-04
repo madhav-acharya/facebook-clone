@@ -42,7 +42,7 @@ export const Stories = () => {
         <div
           className="story"
           style={{
-            backgroundImage: `url(${currentUserDatas?.profilePicture})`,
+            backgroundImage: `url(https://facebook-clone-backendd.onrender.com/${currentUserDatas?.profilePicture})`,
           }}
         >
           {currentUserDatas && (
@@ -51,7 +51,7 @@ export const Stories = () => {
               onClick={() => navigate("/story/create")}
             >
               <img
-                src={currentUserDatas.profilePicture}
+                src={`https://facebook-clone-backendd.onrender.com/${currentUserDatas.profilePicture}`}
                 alt="Create Story"
                 className="own-story-pic"
               />
@@ -69,7 +69,7 @@ export const Stories = () => {
           storyDatas.map((storyData, index) => (
             <div
               className="story"
-              style={{ backgroundImage: `url(${storyData.image})` }}
+              style={{ backgroundImage: `url(https://facebook-clone-backendd.onrender.com/${storyData.image})` }}
               key={storyData._id}
             >
               <div
@@ -83,7 +83,7 @@ export const Stories = () => {
                 }}
               >
                 <img
-                  src={storyData.image}
+                  src={`https://facebook-clone-backendd.onrender.com/${storyData.image}`}
                   alt={storyData.image}
                   className="story-pic"
                   onClick={ () => {localStorage.setItem("selectedStory", index);}}

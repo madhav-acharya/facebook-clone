@@ -53,7 +53,7 @@ export const Post = () => {
         >
           {postData.image && (
             <img
-              src={postData.image}
+              src={`https://facebook-clone-backendd.onrender.com/${postData.image}`}
               alt={postData.image}
               className="p-image"
               onClick={() => {
@@ -198,7 +198,7 @@ export const ReactionPanel = ({ setShowReact, post }) => {
 
   const handleLike = async () => {
     try {
-      const response = await axios.put("http://localhost:3001/api/posts/like", { postId: post._id, userId });
+      const response = await axios.put("https://facebook-clone-backendd.onrender.com/api/posts/like", { postId: post._id, userId });
       setLikes(response.data.likes.length);
       setLiked(response.data.likes.includes(userId));
     } catch (error) {

@@ -17,7 +17,7 @@ export const Login = () => {
     const handleLogin = (e)=>
     {
         e.preventDefault();
-        axios.post('http://localhost:3001/api/users/login', {email, password})
+        axios.post('https://facebook-clone-backendd.onrender.com/api/users/login', {email, password})
         .then((response)=>
         {
             if (response.data.status === "Login sucessful")
