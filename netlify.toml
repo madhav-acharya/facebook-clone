@@ -5,6 +5,4 @@
 
 [build.environment]
 NODE_OPTIONS = "--max-old-space-size=4096"
-
-[build.environment]
-  NODE_VERSION = "16"
+NODE_VERSION = "16"
