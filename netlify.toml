@@ -1,9 +1,0 @@
-[build]
-  base = "/frontend"
-  command = "NODE_OPTIONS=--max-old-space-size=4096 npm run build"
-  publish = "/build"
-
-[build.environment]
-NODE_OPTIONS = "--max-old-space-size=8192"
-NODE_VERSION = "18"
-CI = "false"
