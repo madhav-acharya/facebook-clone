@@ -1,9 +1,9 @@
 [build]
   base = "/frontend"
-  command = "NODE_OPTIONS=--openssl-legacy-provider npm run build"
+  command = "NODE_OPTIONS=--max-old-space-size=4096 --openssl-legacy-provider npm run build"
   publish = "/build"
 
 [build.environment]
-NODE_OPTIONS = "--max-old-space-size=4096"
+NODE_OPTIONS = "--max-old-space-size=8192"
 NODE_VERSION = "18"
 CI = "false"
