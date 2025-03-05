@@ -27,7 +27,7 @@
     "webpack": "4.42.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
     "build": "CI=false NODE_OPTIONS='--openssl-legacy-provider --max-old-space-size=16384' react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

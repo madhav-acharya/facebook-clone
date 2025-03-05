@@ -25,6 +25,8 @@ export const Login = () => {
               console.log("Sucessfully sent data for the verification in the backend")
               localStorage.setItem("token", response.data.token);
               navigate('/')
+              window.location.reload()
+              window.location.href('/')
             }
             else if (response.data === "Invalid password")
             {
