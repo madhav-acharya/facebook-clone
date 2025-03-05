@@ -86,6 +86,7 @@ export const LeftSideBar = () => {
         <div className="story-link">
           {userDatas?userDatas.map((data) => (
             <div className="story-active">
+            {data.stories.length > 0 && (
             <BarLink
               key={data?data._id:<p>loading...</p>}
               photo={data?data.profilePicture:<p>loading...</p>}
@@ -94,8 +95,8 @@ export const LeftSideBar = () => {
               added={true}
               storyCount={data?data.stories.length:<p>loading...</p>}
               isPost={true}
-              time={data?moment(data.stories[0].createdAt).fromNow():<p>loading...</p>}
-            />
+              time={data?moment(data.stories&&data.stories[0].createdAt).fromNow():<p>loading...</p>}
+            />)}
             </div>
           )):<p>Loading...</p>}
         </div>

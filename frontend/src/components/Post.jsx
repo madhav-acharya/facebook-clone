@@ -192,7 +192,7 @@ export const ReactIcons = ({ likeIcon, loveIcon }) => {
 
 export const ReactionPanel = ({ setShowReact, post }) => {
   const {currentUserDatas} = useAppContext();
-  const userId = currentUserDatas._id;
+  const userId = currentUserDatas&&currentUserDatas._id;
   const [likes, setLikes] = useState(post&&post.likes.length);
   const [liked, setLiked] = useState(post&&post.likes.includes(userId));
 
