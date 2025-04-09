@@ -45,3 +45,4 @@ cd fb-clone
 npm install
 cd frontend npm start
 cd ../backend && npm run dev
+enjoy
