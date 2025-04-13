@@ -209,7 +209,7 @@ export const RightNav = () => {
             setShowNotification(false);
           }}
         >
-          <Profile profile={currentUserDatas?currentUserDatas.profilePicture:<p>loading...</p>} isAccount={true} _id={currentUserDatas?currentUserDatas._id:<p>loading..</p>} name={currentUserDatas?(currentUserDatas.firstName+" "+currentUserDatas.lastName):<p>loading...</p>}/>
+          <Profile profile={currentUserDatas?.profilePicture} isAccount={true} _id={currentUserDatas?._id} name={`${currentUserDatas?.firstName} ${currentUserDatas?.lastName}`}/>
         </div>
       </div>
       <div className="acc-sett">
@@ -309,9 +309,9 @@ export const RightNav = () => {
                   <>
                     {" "}
                     <BarLink
-                      photo={currentUserDatas?currentUserDatas.profilePicture:<p>loading...</p>}
+                      photo={currentUserDatas?.profilePicture}
                       name={
-                        currentUserDatas?(currentUserDatas.firstName+" "+currentUserDatas.lastName):<p>loading...</p>
+                        `${currentUserDatas?.firstName} ${currentUserDatas?.lastName}`
                       }
                       isOnline={true}
                     />{" "}
@@ -401,7 +401,14 @@ export function Profile({ profile, profiles, isStory, isOnline, isAccount, _id, 
     <div className="profile" >
       <NavLink to={`/${name}/${_id}`}>
         <img
-          src={profile?`https://facebook-clone-backendd.onrender.com/${profile}`:profiles}
+          src={
+            profile
+              ? (profile.startsWith('/uploads')
+                  ? `https://facebook-clone-backendd.onrender.com${profile}`
+                  : profile)
+              : profiles
+          }
+          
           className={`${isStory ? "profile-pic for-story" : "profile-pic"}`}
           alt={"profile"}
         />
@@ -520,16 +527,16 @@ export const BelowNav = () => {
     <div className="below-nav">
       <div className="search-profile">
         <Profile
-          profile={currentUserDatas?currentUserDatas.profilePicture:<p>loading...</p>}
+          profile={currentUserDatas?.profilePicture}
           isStory={false}
           isOnline={true}
-          _id={currentUserDatas?currentUserDatas._id:<p>loading...</p>}
+          _id={currentUserDatas?._id}
         />
         <SearchBar
           widths={"99%"}
           heights={"40px"}
           fontsize={".8rem"}
-          placeholder={`What's on your mind, ${currentUserDatas?currentUserDatas.firstName:<p>loading...</p>}?`}
+          placeholder={`What's on your mind, ${currentUserDatas?.firstName}?`}
         />
       </div>
       <Upload uploadIcons={uploadIcons} />

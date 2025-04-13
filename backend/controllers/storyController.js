@@ -6,7 +6,16 @@ export const createStory = async (req, res) => {
   try {
     const image = req.file ? `/uploads/${req.file.filename}` : "";
     const { user, mediaType, caption } = req.body;
-    const newStory = new Story({ user, mediaType, image, caption });
+
+    const imageFilePath = req.file.path;
+    const result = await cloudinary.uploader.upload(imageFilePath, {
+      folder: "fb-clone/users",
+      resource_type: "image",
+      transformation: [
+        { quality: "auto", fetch_format: "auto" }
+      ],
+    });
+    const newStory = new Story({ user, mediaType, image: result.secure_url, caption });
     await newStory.save();
     await User.findByIdAndUpdate(user, { $push: { stories: newStory._id } });
     res.status(201).json(newStory);

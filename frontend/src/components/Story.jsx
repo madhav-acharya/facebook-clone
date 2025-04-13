@@ -42,7 +42,7 @@ export const Stories = () => {
         <div
           className="story"
           style={{
-            backgroundImage: `url(https://facebook-clone-backendd.onrender.com/${currentUserDatas?.profilePicture})`,
+            backgroundImage: currentUserDatas?.profilePicture.startsWith('/uploads')?currentUserDatas?.profilePicture:`url(https://facebook-clone-backendd.onrender.com/${currentUserDatas?.profilePicture})`,
           }}
         >
           {currentUserDatas && (
@@ -51,7 +51,11 @@ export const Stories = () => {
               onClick={() => navigate("/story/create")}
             >
               <img
-                src={`https://facebook-clone-backendd.onrender.com/${currentUserDatas.profilePicture}`}
+                src={
+                  currentUserDatas?.profilePicture?.startsWith('/uploads')
+                    ? `https://facebook-clone-backendd.onrender.com${currentUserDatas?.profilePicture}`
+                    : currentUserDatas?.profilePicture
+                }
                 alt="Create Story"
                 className="own-story-pic"
               />
@@ -65,12 +69,12 @@ export const Stories = () => {
           )}
         </div>
 
-        {storyDatas ? (
-          storyDatas.map((storyData, index) => (
+        {(
+          storyDatas?.map((storyData, index) => (
             <div
               className="story"
-              style={{ backgroundImage: `url(https://facebook-clone-backendd.onrender.com/${storyData.image})` }}
-              key={storyData._id}
+              style={{ backgroundImage: `url(https://facebook-clone-backendd.onrender.com/${storyData?.image})` }}
+              key={storyData?._id}
             >
               <div
                 className="ons"
@@ -83,27 +87,25 @@ export const Stories = () => {
                 }}
               >
                 <img
-                  src={`https://facebook-clone-backendd.onrender.com/${storyData.image}`}
-                  alt={storyData.image}
+                  src={`https://facebook-clone-backendd.onrender.com/${storyData?.image}`}
+                  alt={storyData?.image}
                   className="story-pic"
                   onClick={ () => {localStorage.setItem("selectedStory", index);}}
                   
                 />
                 <div className="story-profile">
                   <Profile
-                    profile={storyData.user.profilePicture}
+                    profile={storyData?.user?.profilePicture}
                     isStory
                     isOnline={true}
                   />
                 </div>
                 <div className="story-name">
-                  {storyData.user.firstName + " " + storyData.user.lastName}
+                  {storyData?.user?.firstName + " " + storyData?.user?.lastName}
                 </div>
               </div>
             </div>
           ))
-        ) : (
-          <p>Loading...</p>
         )}
 
         <div

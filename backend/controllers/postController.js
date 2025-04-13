@@ -6,10 +6,19 @@ export const createPost = async (req, res) => {
     const { user, caption } = req.body;
     const image = req.file ? `/uploads/${req.file.filename}` : ""; 
 
+    const imageFilePath = req.file.path;
+    const result = await cloudinary.uploader.upload(imageFilePath, {
+      folder: "fb-clone/users",
+      resource_type: "image",
+      transformation: [
+        { quality: "auto", fetch_format: "auto" }
+      ],
+    });
+
     const post = new Post({
       user,
       caption,
-      image,
+      image: result.secure_url,
     });
 
     await post.save();

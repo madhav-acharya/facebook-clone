@@ -22,7 +22,7 @@ export const Uploads = ({isLive, isPost, isReel}) => {
   const [userId, setUserId] = useState('');
   const [imageSRC, setImageSRC] = useState();
 
-  useEffect(()=>{postDatas&&setPostID(postDatas.length+1) }, [postID, postDatas])
+  useEffect(()=>{postDatas&&setPostID(postDatas?.length+1) }, [postID, postDatas])
 
   useEffect(() => {
     
@@ -31,7 +31,7 @@ export const Uploads = ({isLive, isPost, isReel}) => {
     if (token) {
       
       const decodedToken = jwtDecode(token);
-      setUserId(decodedToken.id); 
+      setUserId(decodedToken?.id); 
     }
   }, []);
 
@@ -68,11 +68,11 @@ export const Uploads = ({isLive, isPost, isReel}) => {
           {isReel&&<span>Create Reel</span>}
           <i ><RxCross1 onClick={()=>{setUploadPopup(false)}}/></i>
         </div>
-        <div className="upload-profile"><BarLink photo={currentUserDatas?currentUserDatas.profilePicture:<p>loading...</p>} name={currentUserDatas?(currentUserDatas.firstName+" "+currentUserDatas.lastName):<p>loading...</p>}  isPost={true} access={<AccessTag accessIcon={<FaUserFriends />} accessTitle={"Friends"} changeIcon={<IoMdArrowDropdown />} />}/>
+        <div className="upload-profile"><BarLink photo={currentUserDatas?.profilePicture} name={`${currentUserDatas?.firstName} ${currentUserDatas?.lastName}`}  isPost={true} access={<AccessTag accessIcon={<FaUserFriends />} accessTitle={"Friends"} changeIcon={<IoMdArrowDropdown />} />}/>
         </div>
         <form onSubmit={handlePostSubmit}>
           <div className="write-something">
-            <input type="text" className='write-input' placeholder={`What's on your mind, ${currentUserDatas?currentUserDatas.firstName:<p>loading..</p>}`} onChange={(e)=>setCaption(e.target.value)}/>
+            <input type="text" className='write-input' placeholder={`What's on your mind, ${currentUserDatas?.firstName}`} onChange={(e)=>setCaption(e?.target?.value)}/>
             <i className="emoji"> <BsEmojiSmile /> </i>
           </div>
           {<div className="browse-cont">

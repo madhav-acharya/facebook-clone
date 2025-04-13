@@ -28,12 +28,12 @@ export const Login = () => {
               window.location.reload()
               window.location.href('/')
             }
-            else if (response.data === "Invalid password")
+            else if (response?.data === "Invalid password")
             {
               console.log("invalid password")
-              setPassError(response.data)
+              setPassError(response?.data)
             }
-            else if (response.data === "No any user exist with that email")
+            else if (response?.data === "No any user exist with that email")
               {
                 console.log("invalid email or password")
                 setPassError("invalid password")
@@ -41,7 +41,7 @@ export const Login = () => {
               }
             else
             {
-                console.log(response.data.status)
+                console.log(response?.data?.status)
                 setMailError("server cannot be connected")
                 setPassError("check internet connection")
             }
@@ -69,7 +69,7 @@ export const Login = () => {
             placeholder="Email or phone number"
             name="email"
             autoComplete="off"
-            onChange={(e)=>setEmail(e.target.value)}
+            onChange={(e)=>setEmail(e?.target?.value)}
             required
           />
           <p className="errors">{mailError}</p>
@@ -78,7 +78,7 @@ export const Login = () => {
             placeholder=" Password"
             name="password"
             autoComplete="off"
-            onChange={(e)=>setPassword(e.target.value)}
+            onChange={(e)=>setPassword(e?.target?.value)}
             required
           />
           <i className="show-hide" onClick={()=>{passState?setPassState(false):setPassState(true)}}>{passState?<ImEye />:<ImEyeBlocked />}</i>

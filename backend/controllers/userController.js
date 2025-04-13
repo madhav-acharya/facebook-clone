@@ -2,6 +2,7 @@ import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import cloudinary from '../config/cloudinary.js';
 
 dotenv.config({path: "../config/.env"});
 
@@ -76,10 +77,18 @@ export const updateProfilePhoto = async (req, res) => {
       return res.status(400).json({ message: "No profile picture uploaded" });
     }
 
-    // Update the user's profile picture in the database
+    const imageFilePath = req.file.path;
+    const result = await cloudinary.uploader.upload(imageFilePath, {
+      folder: "fb-clone/users",
+      resource_type: "image",
+      transformation: [
+        { quality: "auto", fetch_format: "auto" }
+      ],
+    });
+    
     const updatedUser = await User.findByIdAndUpdate(
       userId,
-      { profilePicture },
+      { profilePicture: result.secure_url },
       { new: true }
     );
 
@@ -100,9 +109,18 @@ export const updateCoverPhoto = async (req, res) => {
       return res.status(400).json({ message: "No cover photo uploaded" });
     }
 
+    const imageFilePath = req.file.path;
+    const result = await cloudinary.uploader.upload(imageFilePath, {
+      folder: "fb-clone/users",
+      resource_type: "image",
+      transformation: [
+        { quality: "auto", fetch_format: "auto" }
+      ],
+    });
+
     const updatedUser = await User.findByIdAndUpdate(
       userId,
-      { coverPhoto },
+      { coverPhoto: result.secure_url },
       { new: true }
     );
 

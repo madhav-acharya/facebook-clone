@@ -34,10 +34,10 @@ const ProfileView = () => {
   const profileInputRef = useRef(null);
   const coverInputRef = useRef(null);
   const params = useParams();
-  const isadmin = jwtDecode(localStorage.getItem('token')).id === params.id;
+  const isadmin = jwtDecode(localStorage.getItem('token'))?.id === params?.id;
 
   const findUserById = (id) => {
-    const users = userDatas?userDatas.find(user => user._id === id):<p>loading...</p>;
+    const users = userDatas?.find(user => user?._id === id);
     return users;
   };
 
@@ -51,7 +51,7 @@ const ProfileView = () => {
 
     try {
       await axios.put(
-        `https://facebook-clone-backendd.onrender.com/api/users/${type}/update/${currentUserDatas._id}`,
+        `https://facebook-clone-backendd.onrender.com/api/users/${type}/update/${currentUserDatas?._id}`,
         formData,
       )
       .then((res)=>{
@@ -67,13 +67,9 @@ const ProfileView = () => {
   };
 
   useEffect(() => {
-    findUserById(params.id);
-  }, [params.id]);
-  const userData = findUserById(params.id);
-
-  if (!userData) {
-    return <h1>Loading...</h1>;
-  }
+    findUserById(params?.id);
+  }, [params?.id]);
+  const userData = findUserById(params?.id);
 
 
   return (
@@ -83,7 +79,7 @@ const ProfileView = () => {
         <div
           className="cover-div"
           style={{
-            backgroundImage: `url(https://facebook-clone-backendd.onrender.com/${userData?userData.coverPhoto:<p>loading...</p>})`,
+            backgroundImage: `url(https://facebook-clone-backendd.onrender.com/${userData?.coverPhoto})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -91,13 +87,13 @@ const ProfileView = () => {
         >
           <div className="cover-image">
             <img
-              src={userData?`https://facebook-clone-backendd.onrender.com/${userData.coverPhoto}`:<p>loading...</p>}
+              src={`https://facebook-clone-backendd.onrender.com/${userData?.coverPhoto}`}
               alt="covers"
               className="cover"
             />
             {isadmin && (
               <span className="edit-cover"
-                onClick={() => coverInputRef.current.click()}
+                onClick={() => coverInputRef?.current?.click()}
               >
                 <i className="cover-camera">
                   <HiCamera />{" "}
@@ -119,14 +115,14 @@ const ProfileView = () => {
           <div className="profile-info">
             <div className="profile-image">
               <img
-                src={`https://facebook-clone-backendd.onrender.com/${userData.profilePicture}`}
+                src={`https://facebook-clone-backendd.onrender.com/${userData?.profilePicture}`}
                 alt=""
                 className="profile-"
               />
               {isadmin&&
                 <>
                 <i className="camera-icon"
-                  onClick={() => profileInputRef.current.click()}
+                  onClick={() => profileInputRef?.current?.click()}
                 >
                   {" "}
                   <ProperIcon icon={<HiCamera />} />{" "}
@@ -145,7 +141,7 @@ const ProfileView = () => {
 
             <div className="details">
               <span className="profile-name">
-                {userData.firstName + " " + userData.lastName}
+                {userData?.firstName + " " + userData?.lastName}
               </span>
               <span className="follow">200k followers . 0 following</span>
             </div>
@@ -173,12 +169,12 @@ const ProfileView = () => {
                   onClick={() => localStorage.setItem("selectedStory", index)}
                 >
                   <BarLink
-                    photo={userData.profilePicture}
-                    name={`${userData.firstName} ${userData.lastName}`}
+                    photo={userData?.profilePicture}
+                    name={`${userData?.firstName} ${userData?.lastName}`}
                     isStory={true}
                     isOnline={true}
                     isPost={true}
-                    time={moment(userData.posts.createdAt).fromNow()}
+                    time={moment(userData?.posts?.createdAt)?.fromNow()}
                     access={<MdPublic />}
                   />
                   <TwoIcon
@@ -187,21 +183,31 @@ const ProfileView = () => {
                   />
                 </div>
                 <div className="post-caption">
-                  <p>{userPost.caption}</p>
+                  <p>{userPost?.caption}</p>
                 </div>
               </div>
               <div className="post-image" onClick={() => navigate("/posts")}>
-                {userPost.image && (
+                {userPost?.image && (
                   <img
-                    src={`https://facebook-clone-backendd.onrender.com/${userPost.image}`}
+                  src={
+                    userPost?.image?.startsWith('/uploads')
+                      ? `https://facebook-clone-backendd.onrender.com${userPost?.image}`
+                      : userPost?.image
+                  }
+                  
                     alt="Post"
                     className="p-image"
                     onClick={() => localStorage.setItem("selectedStory", index)}
                   />
                 )}
-                {userPost.video && (
+                {userPost?.video && (
                   <video
-                    src={`https://facebook-clone-backendd.onrender.com/${userPost.video}`}
+                  src={
+                    userPost?.video?.startsWith('/uploads')
+                      ? `https://facebook-clone-backendd.onrender.com${userPost?.video}`
+                      : userPost?.image
+                  }
+                  
                     className="p-video"
                     controls
                     autoPlay
@@ -221,11 +227,11 @@ const ProfileView = () => {
                         loveIcon={<BsHeartFill />}
                       />
                     </span>
-                    <span className="r-count">{userPost?(userPost.likes.length):<p>loading...</p>}</span>
+                    <span className="r-count">{(userPost?.likes?.length)}</span>
                   </div>
                   <div className="com-share">
-                    <span className="c-count">{`${userPost?(userPost.comments.length):<p>loading...</p>} comments`}</span>
-                    <span className="s-count">{`${userPost?(userPost.shares.length):<p>loading...</p>} shares`}</span>
+                    <span className="c-count">{`${(userPost?.comments?.length)} comments`}</span>
+                    <span className="s-count">{`${(userPost?.shares?.length)} shares`}</span>
                   </div>
                 </div>
                 <Activity

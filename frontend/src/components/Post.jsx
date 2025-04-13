@@ -21,7 +21,7 @@ export const Post = () => {
   const { postDatas } = useAppContext();
 
   return postDatas ? (
-    postDatas.map((postData, index) => (
+    postDatas?.map((postData, index) => (
       <div className="post" key={index}>
         <div className="post-header">
           <div className="post-heading" 
@@ -29,20 +29,20 @@ export const Post = () => {
               >
             <BarLink
               key={index}
-              photo={postData.user.profilePicture}
-              name={postData.user.firstName + " " + postData.user.lastName}
+              photo={postData?.user?.profilePicture}
+              name={postData?.user?.firstName + " " + postData?.user?.lastName}
               isStory={true}
               isOnline={true}
               isPost={true}
-              time={moment(postData.createdAt).fromNow()}
+              time={moment(postData?.createdAt)?.fromNow()}
               access={<MdPublic />}
-              _id={postData.user._id}
+              _id={postData?.user?._id}
               
             />
             <TwoIcon icon1={<PiDotsThreeOutlineFill />} icon2={<RxCross2 />} />
           </div>
           <div className="post-caption">
-            <p>{postData.caption}</p>
+            <p>{postData?.caption}</p>
           </div>
         </div>
         <div
@@ -51,10 +51,14 @@ export const Post = () => {
             navigate("/posts");
           }}
         >
-          {postData.image && (
+          {postData?.image && (
             <img
-              src={`https://facebook-clone-backendd.onrender.com/${postData.image}`}
-              alt={postData.image}
+            src={
+              postData?.image?.startsWith('/uploads')
+                ? `https://facebook-clone-backendd.onrender.com${postData?.image}`
+                : postData?.image
+            }
+              alt={postData?.image}
               className="p-image"
               onClick={() => {
                 localStorage.setItem("selectedStory", index);
@@ -64,7 +68,7 @@ export const Post = () => {
           )}
           {postData.video && (
             <video
-              src={postData.video}
+              src={postData?.video}
               className="p-video"
               controls
               autoPlay
@@ -86,11 +90,11 @@ export const Post = () => {
                   />
                 }
               </span>
-              <span className="r-count">{postData.likes.length}</span>
+              <span className="r-count">{postData?.likes?.length}</span>
             </div>
             <div className="com-share">
-              <span className="c-count">{`${postData.comments.length} comments`}</span>
-              <span className="s-count">{`${postData.shares.length} shares`}</span>
+              <span className="c-count">{`${postData?.comments?.length} comments`}</span>
+              <span className="s-count">{`${postData?.shares?.length} shares`}</span>
             </div>
           </div>
           <Activity
@@ -105,9 +109,7 @@ export const Post = () => {
         </div>
       </div>
     ))
-  ) : (
-    <p>Loading...</p>
-  );
+  ) ;
 };
 
 export const TwoIcon = ({ icon1, icon2 }) => {
@@ -198,11 +200,11 @@ export const ReactionPanel = ({ setShowReact, post }) => {
 
   const handleLike = async () => {
     try {
-      const response = await axios.put("https://facebook-clone-backendd.onrender.com/api/posts/like", { postId: post._id, userId });
-      setLikes(response.data.likes.length);
-      setLiked(response.data.likes.includes(userId));
+      const response = await axios.put("https://facebook-clone-backendd.onrender.com/api/posts/like", { postId: post?._id, userId });
+      setLikes(response?.data?.likes?.length);
+      setLiked(response?.data?.likes?.includes(userId));
     } catch (error) {
-      console.error("Error liking post:", error.response?.data?.error || error.message);
+      console.error("Error liking post:", error?.response?.data?.error || error?.message);
     }
   };
 

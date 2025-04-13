@@ -14,12 +14,12 @@ export const LeftBar = () => {
   return (
     <div className="leftBar">
       <BarLink
-        photo={currentUserDatas?currentUserDatas.profilePicture:<p>loading...</p>}
+        photo={currentUserDatas?.profilePicture}
         name={
-          currentUserDatas?(currentUserDatas.firstName+" "+currentUserDatas.lastName):<p>loadings...</p>
+          (currentUserDatas?.firstName+" "+currentUserDatas?.lastName)
         }
         isOnline={true}
-        _id={currentUserDatas?currentUserDatas._id:""}
+        _id={currentUserDatas?._id}
       />
       <div className="links" onClick={() => navigate("/")}>
         <BarLink photos={"/images/friend.png"} name={"Friends"} />
@@ -81,16 +81,16 @@ export const RightBar = () => {
         icon1={<FaSearch />}
         icon2={<PiDotsThreeOutlineFill />}
       />
-      {userDatas?userDatas.map((data) => (
+      {userDatas?.map((data) => (
         <BarLink
-          key={data._id}
-          photo={data.profilePicture}
-          name={data.firstName+" "+data.lastName}
+          key={data?._id}
+          photo={data?.profilePicture}
+          name={data?.firstName+" "+data?.lastName}
           isStory={true}
           isOnline={true}
-          _id={data._id}
+          _id={data?._id}
         />
-      )):<p>Loading...</p>}
+      ))}
     </div>
   );
 };

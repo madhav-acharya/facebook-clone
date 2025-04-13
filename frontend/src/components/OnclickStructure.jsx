@@ -84,21 +84,21 @@ export const LeftSideBar = () => {
         </div>
         <span className="other-title">All Stories</span>
         <div className="story-link">
-          {userDatas?userDatas.map((data) => (
+          {userDatas?.map((data) => (
             <div className="story-active">
-            {data.stories.length > 0 && (
+            {data?.stories?.length > 0 && (
             <BarLink
-              key={data?data._id:<p>loading...</p>}
-              photo={data?data.profilePicture:<p>loading...</p>}
-              name={data?(data.firstName + " " + data.lastName):<p>loading...</p>}
+              key={data?._id}
+              photo={data?.profilePicture}
+              name={`${data?.firstName} ${data?.lastName}`}
               isStory={true}
               added={true}
-              storyCount={data?data.stories.length:<p>loading...</p>}
+              storyCount={data?.stories?.length}
               isPost={true}
-              time={data?moment(data.stories&&data.stories[0].createdAt).fromNow():<p>loading...</p>}
+              time={moment(data?.stories?.[0]?.createdAt)?.fromNow()}
             />)}
             </div>
-          )):<p>Loading...</p>}
+          ))}
         </div>
       </div>
     </div>
@@ -118,18 +118,18 @@ export const RightSideBar = () => {
                 <div className="post-header">
                   <div className="post-heading">
                     <BarLink
-                      photo={postData?postData.user.profilePicture:<p>loading...</p>}
-                      name={postData?(postData.user.firstName + " " + postData.user.lastName):<p>loading...</p>}
+                      photo={postData?.user?.profilePicture}
+                      name={`${postData?.user?.firstName} ${postData?.user?.lastName}`}
                       isStory={true}
                       isOnline={true}
                       isPost={true}
-                      time={moment(postData&&postData.createdAt).fromNow()}
+                      time={moment(postData?.createdAt)?.fromNow()}
                       access={<MdPublic />}
                     />
                     <TwoIcon icon1={<PiDotsThreeOutlineFill />} icon2={<RxCross2 />} />
                   </div>
                   <div className="post-caption">
-                    <p>{postData?postData.caption:<span>loading...</span>}</p>
+                    <p>{postData?.caption}</p>
                   </div>
                 </div>
                 <br />
@@ -147,11 +147,11 @@ export const RightSideBar = () => {
                           />
                         }
                       </span>
-                      <span className="r-count">{postData?postData.likes.length:<p>loading...</p>}</span>
+                      <span className="r-count">{postData?.likes?.length}</span>
                     </div>
                     <div className="com-share">
-                      <span className="c-count">{`${postData?postData.comments.length:<p>loading...</p>} comments`}</span>
-                      <span className="s-count">{`${postData?postData.shares.length:<p>loading...</p>} shares`}</span>
+                      <span className="c-count">{`${postData?.comments?.length} comments`}</span>
+                      <span className="s-count">{`${postData?.shares?.length} shares`}</span>
                     </div>
                   </div>
                   <Activity
@@ -180,14 +180,14 @@ export const OnclickStory = () => {
   const [currentIndex, setCurrentIndex] = useState(localStorage.getItem("selectedStory")); 
 
   const nextStory = () => {
-    if (Number(currentIndex) < storyDatas.length - 1) {
-      setCurrentIndex(Number(currentIndex) + 1);
+    if (Number(currentIndex&&currentIndex) < storyDatas?.length - 1) {
+      setCurrentIndex(Number(currentIndex&&currentIndex) + 1);
     }
   };
 
   const prevStory = () => {
-    if (Number(currentIndex) > 0) {
-      setCurrentIndex(Number(currentIndex) - 1);
+    if (Number(currentIndex&&currentIndex) > 0) {
+      setCurrentIndex(Number(currentIndex&&currentIndex) - 1);
     }
   };
 
@@ -213,9 +213,9 @@ export const OnclickStory = () => {
             {storyDatas&&(storyDatas[Number(currentIndex)].image) ? (
               <img
                 src={
-                  storyDatas
+                  storyDatas?.[Number?.(currentIndex)]?.image?.startsWith("/uploads")
                     ? `https://facebook-clone-backendd.onrender.com/${storyDatas[Number(currentIndex)].image}`
-                    : <p>loading...</p>
+                    : storyDatas?.[Number?.(currentIndex)]?.image
                 }
                 alt="storyimg"
                 className="story-img"
@@ -228,22 +228,16 @@ export const OnclickStory = () => {
           <div className="story-head">
             <BarLink
               photo={
-                storyDatas
-                  ? storyDatas[Number(currentIndex)].user.profilePicture
-                  : <p>loading...</p>
+                storyDatas?.[Number(currentIndex&&currentIndex)]?.user?.profilePicture
               }
               name={
-                storyDatas
-                  ? storyDatas[Number(currentIndex)].user.firstName +
+                storyDatas?.[Number(currentIndex)]?.user?.firstName +
                     " " +
-                    storyDatas[Number(currentIndex)].user.lastName
-                  : <p>loading...</p>
+                    storyDatas?.[Number(currentIndex)]?.user?.lastName
               }
               isOnline={true}
               isPost={true}
-              time={storyDatas
-                  ? moment(storyDatas[Number(currentIndex)].createdAt).fromNow()
-                  : <p>loading...</p>}
+              time={moment(storyDatas?.[Number?.(currentIndex)]?.createdAt)?.fromNow()}
               access={<MdPublic />}
             />
             <div className="story-control-icons">
@@ -273,8 +267,8 @@ export const OnclickStory = () => {
           </div>
         </div>
         <div
-          onClick={nextStory} disabled={Number(currentIndex) === storyDatas&&storyDatas.length - 1}
-          style={{ opacity: Number(currentIndex) === storyDatas.length - 1 ? 0 : 1 }}
+          onClick={nextStory} disabled={Number(currentIndex&&currentIndex) === storyDatas?.length - 1}
+          style={{ opacity: Number?.(currentIndex&&currentIndex) === storyDatas?.length - 1 ? 0 : 1 }}
         >
           <div className="next-stb">
             <ConstructButton rawIcon={<GrNext />} />
@@ -289,7 +283,12 @@ export const OnclickStory = () => {
 export const OnclickPost = ({ image }) => {
   return (
     <div className="onclick-post">
-      <img src={`https://facebook-clone-backendd.onrender.com/${image}`} alt="onclick-" className="p-image" />
+      <img src={
+  image?.startsWith('/uploads')
+    ? `https://facebook-clone-backendd.onrender.com${image}`
+    : image
+}
+ alt="onclick-" className="p-image" />
     </div>
   );
 };
@@ -301,7 +300,7 @@ export const ActualOnclickPost = () => {
     <div className="actual-post">
       <OnclickStructure
         rightSidebar={<RightSideBar />}
-        onClickContent={<OnclickPost image={postDatas?postDatas[Number(currentIndex)].image:<p>loading...</p>} />}
+        onClickContent={<OnclickPost image={postDatas?.[Number(currentIndex)]?.image} />}
       />
     </div>
   );
@@ -342,9 +341,9 @@ export const LeftCreateStoryBar = () => {
         <span className="story-title">Your Stories</span>
         <div className="create-story-border">
           <BarLink
-            photo={currentUserDatas?currentUserDatas.profilePicture:<p>loading...</p>}
+            photo={currentUserDatas?.profilePicture}
             name={
-              currentUserDatas?(currentUserDatas.firstName+" "+currentUserDatas.lastName):<p>loading...</p>
+              (currentUserDatas?.firstName+" "+currentUserDatas?.lastName)
             }
             isOnline={true}
           />
@@ -365,7 +364,7 @@ export const CreateStoryCards = () => {
   const [userId, setUserId] = useState('');
 
   useEffect(() => {
-    storyDatas && setStoryID(storyDatas.length + 1);
+    storyDatas && setStoryID(storyDatas?.length + 1);
   }, [storyDatas, storyID]);
 
   useEffect(() => {
@@ -375,7 +374,7 @@ export const CreateStoryCards = () => {
       if (token) {
         
         const decodedToken = jwtDecode(token);
-        setUserId(decodedToken.id); 
+        setUserId(decodedToken?.id); 
       }
     }, []);
 
@@ -400,7 +399,7 @@ export const CreateStoryCards = () => {
   };
 
   const handleFileChange = (e) => {
-    setPhoto(e.target.files[0]);
+    setPhoto(e?.target?.files[0]);
     const imgFile = e.target.files[0];
     const imgURL = URL.createObjectURL(imgFile);
     setImageSRC(imgURL);
@@ -410,7 +409,7 @@ export const CreateStoryCards = () => {
       <div className="story-cards">
         <div
           className="create-photo"
-          onClick={() => fileInputRef.current.click()}
+          onClick={() => fileInputRef?.current?.click()}
         >
           <ConstructButton rawIcon={<FaPhotoFilm />} />
           <span>Create a photo story</span>
