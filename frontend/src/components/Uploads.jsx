@@ -43,7 +43,8 @@ export const Uploads = ({isLive, isPost, isReel}) => {
     formData.append('image', photo)
 
 
-    axios.post('https://facebook-clone-backendd.onrender.com/api/posts/uploads', formData)
+    // axios.post('https://facebook-clone-backendd.onrender.com/api/posts/uploads', formData)
+    axios.post('http://localhost:5000/api/posts/uploads', formData)
     .then((res)=>{
       console.log("Uploaded sucessfully ")
       setUploadPopup(false)

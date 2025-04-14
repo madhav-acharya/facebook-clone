@@ -20,7 +20,7 @@ export const Post = () => {
   const navigate = useNavigate();
   const { postDatas } = useAppContext();
 
-  return postDatas ? (
+  return (
     postDatas?.map((postData, index) => (
       <div className="post" key={index}>
         <div className="post-header">
@@ -66,7 +66,7 @@ export const Post = () => {
               }
             />
           )}
-          {postData.video && (
+          {postData?.video && (
             <video
               src={postData?.video}
               className="p-video"
