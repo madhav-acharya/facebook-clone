@@ -1,5 +1,6 @@
 import Post from "../models/Post.js";
 import User from "../models/User.js";
+import cloudinary from "../config/cloudinary.js";
 
 export const createPost = async (req, res) => {
   try {
@@ -26,6 +27,7 @@ export const createPost = async (req, res) => {
 
     res.status(201).json({ message: "Post created", post });
   } catch (error) {
+    console.error("Error creating post:", error);
     res.status(500).json({ error: error.message });
   }
 };

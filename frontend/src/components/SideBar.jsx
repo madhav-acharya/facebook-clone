@@ -7,10 +7,19 @@ import { FaSearch } from "react-icons/fa";
 import useAppContext from "../hooks/useAppContext";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import Skeleton from "./Skeleton";
 
 export const LeftBar = () => {
   const navigate = useNavigate();
   const {currentUserDatas} = useAppContext();
+
+  if (!currentUserDatas) {
+    return (
+    
+        <Skeleton />
+     
+    );
+  }
   return (
     <div className="leftBar">
       <BarLink

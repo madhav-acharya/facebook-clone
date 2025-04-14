@@ -6,6 +6,7 @@ import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
 import useAppContext from "../hooks/useAppContext";
+import Skeleton from "./Skeleton";
 
 export const Stories = () => {
   const [dimension, setDimension] = useState(200);
@@ -14,6 +15,14 @@ export const Stories = () => {
   const { storyDatas, currentUserDatas} = useAppContext();
   const cRef = useRef(null);
   const navigate = useNavigate();
+
+  if (!storyDatas || !currentUserDatas) {
+    return (
+    
+        <Skeleton />
+     
+    );
+  }
 
   const nextStory = () => {
     setDimension(cRef.current.clientWidth);

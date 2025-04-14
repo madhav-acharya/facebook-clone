@@ -21,7 +21,6 @@ import { MdPublic } from "react-icons/md";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useParams } from "react-router-dom";
-import { use } from "react";
 
 const ProfileView = () => {
   const {

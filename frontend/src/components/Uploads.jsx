@@ -11,6 +11,7 @@ import axios from 'axios';
 import useAppContext from '../hooks/useAppContext';
 // import datas from '../assets/json/data.json';
 import { jwtDecode } from "jwt-decode";
+import Skeleton from './Skeleton';
 
 
 export const Uploads = ({isLive, isPost, isReel}) => {
@@ -22,6 +23,7 @@ export const Uploads = ({isLive, isPost, isReel}) => {
   const [userId, setUserId] = useState('');
   const [imageSRC, setImageSRC] = useState();
 
+  
   useEffect(()=>{postDatas&&setPostID(postDatas?.length+1) }, [postID, postDatas])
 
   useEffect(() => {
@@ -43,8 +45,8 @@ export const Uploads = ({isLive, isPost, isReel}) => {
     formData.append('image', photo)
 
 
-    // axios.post('https://facebook-clone-backendd.onrender.com/api/posts/uploads', formData)
-    axios.post('http://localhost:5000/api/posts/uploads', formData)
+    axios.post('https://facebook-clone-backendd.onrender.com/api/posts/uploads', formData)
+    // axios.post('http://localhost:3001/api/posts/uploads', formData)
     .then((res)=>{
       console.log("Uploaded sucessfully ")
       setUploadPopup(false)
@@ -60,6 +62,13 @@ export const Uploads = ({isLive, isPost, isReel}) => {
     const imgURL = URL.createObjectURL(imgFile)
     setImageSRC(imgURL)
   }
+
+  if(!currentUserDatas || !postDatas){
+    return(
+      <Skeleton />
+    )
+  }
+
   
   return (
     <div className="upload-container" >

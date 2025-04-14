@@ -1,5 +1,6 @@
 import Story from "../models/Story.js";
 import User from "../models/User.js";
+import cloudinary from "../config/cloudinary.js";
 
 // Create a new story
 export const createStory = async (req, res) => {

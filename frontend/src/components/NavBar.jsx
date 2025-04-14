@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/NavBar.css";
 import { IoIosArrowDown } from "react-icons/io";
 import { Uploads } from "./Uploads";
@@ -28,6 +28,7 @@ import { useNavigate } from "react-router-dom";
 import { FaPenToSquare } from "react-icons/fa6";
 import { HiBookOpen } from "react-icons/hi";
 import useAppContext from "../hooks/useAppContext";
+import Skeleton from "./Skeleton";
 
 const uploadIcons = [
   <RiLiveFill color="#F02848" />,
@@ -162,6 +163,10 @@ export const RightNav = () => {
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
   const { setIsLive, setIsPost, setIsReel, setUploadPopup, currentUserDatas} = useAppContext();
+
+  if (!currentUserDatas) {
+    return <Skeleton />;
+  }
 
   const handleLogout = () => {
     localStorage.clear();

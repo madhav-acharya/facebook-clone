@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { NavBar } from './components/NavBar';
 import Home from './pages/Home';
 import {Watch} from './pages/Watch';
@@ -11,14 +11,36 @@ import { Signup } from './components/Signup';
 import { Navigate } from 'react-router-dom';
 import { ActualOnclickPost, ActualOnclickStory } from './components/OnclickStructure';
 import { OnclickCreateStory } from './components/OnclickStructure';
-
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ProfileView from './components/ProfileView';
-
+import Skeleton from './components/Skeleton';
 
 function App() {
-  const token = localStorage.getItem('token');
   
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const handleLoad = () => setLoading(false);
+
+    if (document.readyState === "complete") {
+      setLoading(false);
+    } else {
+      setLoading(true);
+      window.addEventListener("load", handleLoad);
+    }
+
+    return () => window.removeEventListener("load", handleLoad);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="skeleton">
+        <Skeleton />
+      </div>
+    );
+  }
+
+  const token = localStorage.getItem('token');
 
   const router = createBrowserRouter([
     {

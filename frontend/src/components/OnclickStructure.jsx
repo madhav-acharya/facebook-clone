@@ -31,6 +31,7 @@ import { AiFillLike } from "react-icons/ai";
 import { BsHeartFill } from "react-icons/bs";
 import { ReactIcons } from "./Post";
 import { Activity } from "./Post";
+import Skeleton from "./Skeleton";
 
 export const OnclickStructure = ({
   leftSidebar,
@@ -65,6 +66,8 @@ export const OnclickStructure = ({
 export const LeftSideBar = () => {
   const navigate = useNavigate();
   const { userDatas } = useAppContext();
+
+  if(!userDatas) return <Skeleton />
   return (
     <div className="left-sidebar">
       <div className="bar-content-left">
@@ -110,6 +113,8 @@ export const RightSideBar = () => {
   const { postDatas } = useAppContext();
   const index = localStorage.getItem("selectedStory");
   const postData = postDatas?postDatas[Number(index)]:null;
+
+  if(!postData) return <Skeleton />
 
   return (
     <div className="right-sidebar">
@@ -178,6 +183,8 @@ export const RightSideBar = () => {
 export const OnclickStory = () => {
   const { storyDatas } = useAppContext();
   const [currentIndex, setCurrentIndex] = useState(localStorage.getItem("selectedStory")); 
+
+  if(!storyDatas) return <Skeleton />
 
   const nextStory = () => {
     if (Number(currentIndex&&currentIndex) < storyDatas?.length - 1) {

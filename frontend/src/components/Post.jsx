@@ -14,11 +14,20 @@ import { useNavigate } from "react-router-dom";
 import useAppContext from "../hooks/useAppContext";
 import moment from "moment";
 import axios from "axios";
+import Skeleton from "./Skeleton";
 
 export const Post = () => {
   const [showReact, setShowReact] = useState(false);
   const navigate = useNavigate();
   const { postDatas } = useAppContext();
+
+  if (!postDatas) {
+    return (
+      
+        <Skeleton />
+     
+    );
+  }
 
   return (
     postDatas?.map((postData, index) => (
