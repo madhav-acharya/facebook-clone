@@ -63,3 +63,16 @@ export const likePost = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+export const deletePost = async (req, res) => {
+  const { postId } = req.body;
+  try
+  {  
+    await Post.deleteOne({postId});
+  }
+  catch(excep)
+  {
+    res.status(500).json({ error: excep.message });
+  }
+};
+  
