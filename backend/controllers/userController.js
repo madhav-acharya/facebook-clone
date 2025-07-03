@@ -59,6 +59,18 @@ export const getUserProfile = async (req, res) => {
   }
 };
 
+export const getUserByEmail = async (req, res) => {
+  try {
+    const { email } = req.body;
+    const user = await User.find(email).populate("friends posts");
+    if (!user) return res.status(404).json({ error: "User not found" });
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 export const getUsers = async (req, res) => {
   try {
     const users = await User.find().populate("friends stories posts"); 
