@@ -35,6 +35,15 @@ export const getStories = async (req, res) => {
   }
 };
 
+export const getStoriesById = async (req, res) => {
+  try {
+    const { _id } = req.body;
+    const stories = await Story.find({ _id }).populate("user").sort({_id: -1});
+    res.json(stories);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 // Mark story as viewed
 export const viewStory = async (req, res) => {
   try {
