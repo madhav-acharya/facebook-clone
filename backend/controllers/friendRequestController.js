@@ -12,6 +12,17 @@ export const sendFriendRequest = async (req, res) => {
   }
 };
 
+export const getAllFriendRequests = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const requests = await FriendRequest.find({ receiver: id });
+    res.json({ data: requests });
+  }
+  catch(error) {
+    res.status(500).json({message: "error while fetching request"})
+  }
+}
+
 export const respondToRequest = async (req, res) => {
   try {
     const { requestId, status } = req.body;
