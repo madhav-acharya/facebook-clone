@@ -25,3 +25,15 @@ export const deleteComment = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+export const fetchComments = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const comments = await Comment.find({ user: userId });
+    if (!comments) return res.status(404).json({ error: "Comment not found" });
+
+    res.status(200).json({ message: "Comment fetch successfully", data: comments });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
