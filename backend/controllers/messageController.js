@@ -25,3 +25,15 @@ export const getMessages = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+export const getMessageById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const messages = await Message.find({
+      _id: id
+    }).sort({ createdAt: 1 });
+    res.status(200).json(messages);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
