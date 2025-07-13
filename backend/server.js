@@ -29,4 +29,4 @@ app.use("/api/messages", messageRoutes);
 app.use("/api/stories", storyRoutes);
 
 
-app.listen(process.env.PORT, ()=>console.log(`server running on the port ${process.env.PORT}`))
+app.listen(process.env.PORT, ()=>console.log(`server running on the http://localhost:${process.env.PORT}`))
