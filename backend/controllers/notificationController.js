@@ -17,3 +17,12 @@ export const markAsRead = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+export const markAsUnread = async (req, res) => {
+  try {
+    await Notification.findByIdAndUpdate(req.params.notificationId, { isRead: false });
+    res.status(200).json({ message: "Notification marked as unread" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
